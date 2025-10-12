@@ -6,4 +6,9 @@ body {
     max-width: 1200px;
     margin-inline: auto;
     padding: 20px;
-  }
+}
+
+nav ul, 
+nav li {
+  display: contents;
+}
