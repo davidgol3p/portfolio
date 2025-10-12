@@ -47,26 +47,6 @@ nav a:hover {
 }
 
 /* ===== Contact Form Styles ===== */
-input,
-textarea,
-button {
-  font: inherit; /* This makes the form controls use the system-ui font set on the body */
-}
-
-label {
-  /* Add vertical margin to separate labels from the content above/below */
-  margin-block: 1em 0.5em; 
-  /* Make labels behave like block elements to ensure they start on a new line */
-  display: block; 
-}
-
-/* Target all input fields and the textarea */
-input,
-textarea {
-  /* Make them take up the full width of their container */
-  width: 100%; 
-  /* Make them behave like block elements */
-  display: block; 
-  /* Ensure padding and border are included in the 100% width */
-  box-sizing: border-box; 
+form {
+  display: grid
 }
