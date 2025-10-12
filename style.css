@@ -48,5 +48,11 @@ nav a:hover {
 
 /* ===== Contact Form Styles ===== */
 form {
-  display: grid
+  display: grid;
+  gap: 1em;
+}
+
+label {
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
 }
