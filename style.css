@@ -14,10 +14,10 @@ body {
     padding: 20px;
 }
 
-/* nav ul, 
+nav ul, 
 nav li {
   display: contents;
-} */
+}
 
 nav {
   display: flex;
