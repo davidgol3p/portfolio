@@ -1,3 +1,5 @@
+/* ===== Home Form Styles ===== */
+
 html {
   --color-accent: oklch(35% 15% 20);
 }
@@ -41,4 +43,16 @@ nav a.current {
 nav a:hover {
   border-bottom: 0.4em solid var(--color-accent);
   padding-bottom: 10px;
+}
+
+/* ===== Contact Form Styles ===== */
+form label {
+  display: block;
+  margin-block: 0.5em;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  box-sizing: border-box;
 }
