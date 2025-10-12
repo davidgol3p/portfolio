@@ -8,30 +8,7 @@ body {
     padding: 20px;
 }
 
-/* nav ul, 
+nav ul, 
 nav li {
   display: contents;
-} */
-
-nav ul {
-  list-style: none;   /* removes bullets */
-  margin: 0;
-  padding: 0;
-  display: flex;      /* optional: makes the links sit in a row */
-  gap: 1rem;          /* space between links */
-}
-
-nav li {
-  margin: 0;
-  padding: 0;
-}
-
-nav a {
-  text-decoration: none;
-  color: steelblue;
-  font-weight: 500;
-}
-
-nav a:hover {
-  text-decoration: underline;
 }
