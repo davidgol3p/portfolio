@@ -46,13 +46,13 @@ nav a:hover {
 }
 
 /* ===== Contact Form Styles ===== */
-form label {
+#contact-form form label {
   display: block;
   margin-block: 0.5em;
 }
 
-form input,
-form textarea {
+#contact-form form input,
+#contact-form form textarea {
   width: 100%;
   box-sizing: border-box;
 }
