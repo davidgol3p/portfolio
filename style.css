@@ -68,6 +68,7 @@ form button {
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 1em;
 }
 
 article {
@@ -88,4 +89,10 @@ h1 {
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
   text-wrap: balance
+}
+
+/* ===== CV Form Styles ===== */
+
+section {
+  display: grid;
 }
