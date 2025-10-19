@@ -1,19 +1,5 @@
 console.log('IT’S ALIVE!');
 
-// function $$(selector, context = document) {
-//   return Array.from(context.querySelectorAll(selector));
-// }
-
-// let navLinks = $$("nav a");
-
-// let currentLink = navLinks.find(
-//   (a) => a.host === location.host && a.pathname === location.pathname
-// );
-
-// if (currentLink) {
-//   currentLink.classList.add("current");
-// }
-
 // Define your base path (adjust "/website/" to match your repo folder if needed)
 const BASE_PATH =
   location.hostname === "localhost" || location.hostname === "127.0.0.1"
