@@ -18,7 +18,7 @@ console.log('IT’S ALIVE!');
 const BASE_PATH =
   location.hostname === "localhost" || location.hostname === "127.0.0.1"
     ? "/"           // Local dev
-    : "/website/";  // Deployed site base path
+    : "/portfolio/";  // Deployed site base path
 
 // Define site pages with clean relative URLs
 let pages = [
