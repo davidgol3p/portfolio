@@ -14,37 +14,43 @@ console.log('IT’S ALIVE!');
 //   currentLink.classList.add("current");
 // }
 
+// Define your base path (adjust "/website/" to match your repo folder if needed)
+const BASE_PATH =
+  location.hostname === "localhost" || location.hostname === "127.0.0.1"
+    ? "/"           // Local dev
+    : "/website/";  // Deployed site base path
+
+// Define site pages with clean relative URLs
 let pages = [
-    { url: '../', title: 'Home' },
-    { url: '../projects', title: 'Projects' },
-    { url: '../contact', title: 'Contact' },
-    { url: '../profile', title: 'Resume' }
+  { url: "", title: "Home" },
+  { url: "projects/", title: "Projects" },
+  { url: "contact/", title: "Contact" },
+  { url: "profile/", title: "Resume" }
 ];
 
-let nav = document.createElement('nav');
+// Create nav
+let nav = document.createElement("nav");
 document.body.prepend(nav);
 
+// Build links
 for (let p of pages) {
-    const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
-    ? "/"                  // Local server
-    : "/website/"; 
-    let url = p.url;
-    let title = p.title;
-    if (!url.startsWith('http')) {
-        url = BASE_PATH + url;
-    }
-    let a = document.createElement('a');
-    if (a.host === location.host && a.pathname === location.pathname) {
-        a.classList.add('current');
-    }
-    
-    a.classList.toggle(
-    'current',
-    a.host === location.host && a.pathname === location.pathname,
-    );
-    a.href = url;
-    a.textContent = title;
-    nav.append(a);
+  let url = p.url;
+
+  // Ensure URL includes the base path
+  if (!url.startsWith("http") && !url.startsWith("/")) {
+    url = BASE_PATH + url;
+  }
+
+  let a = document.createElement("a");
+  a.href = url;
+  a.textContent = p.title;
+
+  // Apply "current" class if this link matches the current page
+  if (a.host === location.host && a.pathname === location.pathname) {
+    a.classList.add("current");
+  }
+
+  nav.append(a);
 }
 
 document.body.insertAdjacentHTML(
