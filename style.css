@@ -2,6 +2,7 @@
 
 html {
   --color-accent: oklch(35% 15% 20);
+  color-scheme: light dark;
 }
 
 body {
@@ -44,6 +45,14 @@ nav a.current {
 nav a:hover {
   border-bottom: 0.4em solid var(--color-accent);
   padding-bottom: 10px;
+}
+
+.color-scheme {
+  position: absolute;   
+  top: 1rem;          
+  right: 1rem;          
+  font-size: 80%;       
+  font-family: inherit;
 }
 
 /* ===== Contact Form Styles ===== */
