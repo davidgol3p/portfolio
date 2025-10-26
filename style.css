@@ -105,3 +105,31 @@ h1, h2, h3, h4, h5, h6 {
 section {
   display: grid;
 }
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* four equal columns */
+  grid-template-rows: auto auto;         /* two rows: one for <dt>, one for <dd> */
+  gap: 0.5rem;                           /* optional spacing between cells */
+  text-align: center;                    /* centers text nicely */
+}
+
+/* Each <dt> (label) should be on the first row */
+.profile-stats dt {
+  grid-row: 1;
+  font-weight: bold;
+}
+
+/* Each <dd> (value) should be on the second row */
+.profile-stats dd {
+  grid-row: 2;
+  margin: 0;  /* remove default dd margins */
+}
+
+.projects img {
+  width: 100%;          /* Fit the container width */
+  height: 200px;        /* Consistent height for all project images */
+  object-fit: cover;    /* Crop to fill space without distortion */
+  border-radius: 8px;   /* Optional: make it look nice */
+  display: block;       /* Remove any default inline spacing */
+}

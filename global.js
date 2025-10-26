@@ -93,3 +93,42 @@ if ("colorScheme" in localStorage) {
 
   console.log("Restored color scheme:", savedScheme);
 }
+
+console.log("Global loaded");
+
+export async function fetchJSON(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching or parsing JSON data:", error);
+  }
+}
+
+export function renderProjects(projects, containerElement, headingLevel = "h2") {
+  if (!(containerElement instanceof HTMLElement)) return;
+
+  containerElement.innerHTML = "";
+  const validHeadings = ["h1", "h2", "h3", "h4", "h5", "h6"];
+  if (!validHeadings.includes(headingLevel)) headingLevel = "h2";
+
+  const projectArray = Array.isArray(projects) ? projects : [projects];
+  projectArray.forEach((p) => {
+    if (!p || typeof p !== "object") return;
+    const article = document.createElement("article");
+    const h = document.createElement(headingLevel);
+    h.textContent = p.title ?? "Untitled Project";
+    const img = document.createElement("img");
+    img.src = p.image ?? "placeholder.jpg";
+    img.alt = p.title ?? "Project image";
+    const desc = document.createElement("p");
+    desc.textContent = p.description ?? "No description provided.";
+    article.append(h, img, desc);
+    containerElement.appendChild(article);
+  });
+}
+
+export async function fetchGithubData(username) {
+  return fetchJSON(`https://api.github.com/users/${username}`);
+}
