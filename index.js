@@ -1,6 +1,12 @@
 import { fetchJSON, renderProjects, fetchGithubData } from "./global.js";
 
-const projects = await fetchJSON("./lib/projects.json");
+const basePath =
+  location.hostname === "localhost" || location.hostname === "127.0.0.1"
+    ? "./"
+    : "/portfolio/";
+
+const projects = await fetchJSON(`${basePath}lib/projects.json`);
+
 const latestProjects = projects.slice(0, 3);
 
 const projectsContainer = document.querySelector(".projects");
