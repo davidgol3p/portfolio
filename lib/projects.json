@@ -2,7 +2,7 @@
     {
         "title": "DSC106 Project1",
         "year": "2025",
-        "image": "/images/DSC106_Project1.jpeg",
+        "image": "../images/DSC106_Project1.jpeg",
         "description": "My first project"
       },
     {
