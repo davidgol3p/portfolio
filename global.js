@@ -61,7 +61,7 @@ document.body.insertAdjacentHTML(
 // Find the <select> element
 let select = document.querySelector("#color-scheme");
 
-// ✅ Step 1: When the user changes the color scheme
+// When the user changes the color scheme
 select.addEventListener("input", function (event) {
   const scheme = event.target.value;
   console.log("color scheme changed to", scheme);
@@ -73,11 +73,11 @@ select.addEventListener("input", function (event) {
     document.documentElement.style.colorScheme = scheme;
   }
 
-  // ✅ Save the preference in localStorage
+  // Save the preference in localStorage
   localStorage.colorScheme = scheme;
 });
 
-// ✅ Step 2: When the page loads, restore the previous setting
+//When the page loads, restore the previous setting
 if ("colorScheme" in localStorage) {
   const savedScheme = localStorage.colorScheme;
 
@@ -116,18 +116,43 @@ export function renderProjects(projects, containerElement, headingLevel = "h2") 
   const projectArray = Array.isArray(projects) ? projects : [projects];
   projectArray.forEach((p) => {
     if (!p || typeof p !== "object") return;
+
     const article = document.createElement("article");
+
+    // Project title
     const h = document.createElement(headingLevel);
     h.textContent = p.title ?? "Untitled Project";
+
+    // Project image
     const img = document.createElement("img");
     img.src = p.image ?? "placeholder.jpg";
     img.alt = p.title ?? "Project image";
+
+    // Container for description + year
+    const infoContainer = document.createElement("div");
+    infoContainer.className = "project-info"; // optional class for styling
+
+    // Description
     const desc = document.createElement("p");
     desc.textContent = p.description ?? "No description provided.";
-    article.append(h, img, desc);
+
+    // Year
+    if (p.year) {
+      const yearEl = document.createElement("p");
+      yearEl.textContent = `Year: ${p.year}`;
+      yearEl.className = "project-year"; // optional class for styling
+      infoContainer.append(desc, yearEl);
+    } else {
+      infoContainer.append(desc);
+    }
+
+    // Append elements to article
+    article.append(h, img, infoContainer);
+
     containerElement.appendChild(article);
   });
 }
+
 
 export async function fetchGithubData(username) {
   return fetchJSON(`https://api.github.com/users/${username}`);

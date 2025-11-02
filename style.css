@@ -133,3 +133,91 @@ section {
   border-radius: 8px;   /* Optional: make it look nice */
   display: block;       /* Remove any default inline spacing */
 }
+
+#projects-plot {
+  max-width: 20em;
+  margin-block: 2em;
+
+  overflow: visible;
+}
+
+.container {
+  display: flex;              /* ✅ lay out children side by side */
+  align-items: center;        /* ✅ vertically center chart & legend */
+  justify-content: center;    /* optional: center the entire group horizontally */
+  gap: 2rem;                  /* ✅ space between chart and legend */
+  flex-wrap: wrap;            /* ✅ allows wrapping on small screens (responsive) */
+  margin: 2rem auto;          /* center container on the page */
+  max-width: 900px;           /* optional: prevent it from stretching too wide */
+}
+
+/* Make the legend flexible and take up remaining width */
+.legend {
+  flex: 1;                    /* ✅ occupy remaining horizontal space */
+  display: flex;              /* keep your side-by-side legend layout */
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+  padding: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+.legend-item {
+  display: flex;              /* align swatch + text horizontally */
+  align-items: center;        /* vertically center text and swatch */
+  gap: 0.5rem;                /* smaller gap between swatch and label */
+}
+
+/* Style the color swatch */
+.legend-item .swatch {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  aspect-ratio: 1 / 1;
+  background-color: var(--color);
+  border-radius: 50%;     /* change to 50% for circular swatches */
+  border: 1px solid #333; /* optional: gives contrast */
+}
+
+.searchBar {
+  width: 100%;
+  max-width: 400px;
+  margin: 1.5rem auto;
+  padding: 0.75rem 1rem;
+
+  font-size: 1rem;
+  color: #333;
+
+  border: 2px solid #ddd;
+  border-radius: 4px;     /* 👈 small rounding — looks clean but rectangular */
+  background-color: #fff;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.searchBar:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+}
+
+&:has(path:hover) {
+  path:not(:hover) {
+    opacity: 0.5;
+  }
+}
+
+path {
+  transition: 300ms;
+}
+
+.selected {
+  --color: oklch(60% 45% 0) !important;
+
+  &:is(path) {
+    fill: var(--color);
+  }
+}

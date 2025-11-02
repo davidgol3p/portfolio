@@ -8,16 +8,6 @@
 </head>
 
 <body>
-  <!--
-  <nav>
-    <ul>
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="../contact/index.html">Contact</a></li>
-      <li><a href="../projects/index.html">Projects</a></li>
-      <li><a href="../profile/index.html">Profile</a></li>
-    </ul>
-  </nav>
-  -->
 
   <label class="color-scheme">
     Color scheme:
@@ -27,6 +17,23 @@
       <option value="dark">Dark</option>
     </select>
   </label>
+
+  <div class="container">
+    <svg id="projects-plot" viewBox="-50 -50 100 100">
+      <!-- D3 pie chart paths go here -->
+    </svg>
+  
+    <ul class="legend">
+      <!-- D3 inserts <li class="legend-item"> elements here -->
+    </ul>
+  </div>
+
+  <input
+  class="searchBar"
+  type="search"
+  aria-label="Search projects"
+  placeholder="🔍 Search projects…"
+  />
 
   <!-- ✅ Add the projects-title class here -->
   <h1 class="projects-title">Projects</h1>
