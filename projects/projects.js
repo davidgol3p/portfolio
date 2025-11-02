@@ -13,10 +13,10 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
 // === Global state ===
 let query = '';
 let selectedIndex = -1;
-let currentPieData = []; // keep track of pie chart data for filtering by year
+let currentPieData = []; // keeps track of pie chart data for filtering by year
 
 /* ------------------------------------------------
-   ✅ HELPER FUNCTION: apply both filters together
+   ✅ HELPER FUNCTION: filter projects by query and selected pie slice
 ------------------------------------------------ */
 function getFilteredProjects() {
   let filtered = projects;
@@ -51,8 +51,8 @@ function renderPieChart(projectsGiven) {
   // Compute year frequencies
   let rolledData = d3.rollups(
     projectsGiven,
-    (v) => v.length,
-    (d) => d.year
+    v => v.length,
+    d => d.year
   );
 
   let data = rolledData.map(([year, count]) => ({
@@ -64,9 +64,9 @@ function renderPieChart(projectsGiven) {
   currentPieData = data;
 
   // Generate pie chart arcs
-  let sliceGenerator = d3.pie().value((d) => d.value);
+  let sliceGenerator = d3.pie().value(d => d.value);
   let arcData = sliceGenerator(data);
-  let arcs = arcData.map((d) => arcGenerator(d));
+  let arcs = arcData.map(d => arcGenerator(d));
 
   // === Draw pie slices ===
   arcs.forEach((arc, idx) => {
@@ -76,7 +76,6 @@ function renderPieChart(projectsGiven) {
       .attr('fill', colors(idx))
       .attr('class', 'pie-slice')
       .on('click', () => {
-        // Toggle selection
         selectedIndex = selectedIndex === idx ? -1 : idx;
         updateSelection();
       });
@@ -108,7 +107,7 @@ function renderPieChart(projectsGiven) {
       i === selectedIndex ? 'legend-item selected' : 'legend-item'
     );
 
-    // filter and re-render projects
+    // filter and re-render projects table based on **both filters**
     const filtered = getFilteredProjects();
     renderProjects(filtered, projectsContainer, 'h2');
 
@@ -126,7 +125,6 @@ if (projects && projectsContainer) {
   renderProjects(projects, projectsContainer, 'h2');
   renderPieChart(projects);
 
-  // update initial title
   if (titleElement) {
     titleElement.textContent = `Projects (${projects.length})`;
   }
@@ -138,15 +136,13 @@ if (projects && projectsContainer) {
    ✅ SEARCH FILTER EVENT LISTENER
 ------------------------------------------------ */
 searchInput.addEventListener('input', (event) => {
-  // update query
   query = event.target.value.toLowerCase().trim();
 
-  // get filtered projects based on BOTH filters
+  // get filtered projects based on **both filters**
   const filtered = getFilteredProjects();
 
-  // re-render everything
+  // re-render projects table only (pie chart stays)
   renderProjects(filtered, projectsContainer, 'h2');
-  renderPieChart(filtered);
 
   // update title
   if (titleElement) {
@@ -154,17 +150,15 @@ searchInput.addEventListener('input', (event) => {
   }
 });
 
+// Pressing Enter with empty search resets everything
 searchInput.addEventListener('keydown', (event) => {
   if (event.key === 'Enter' && !event.target.value.trim()) {
-    // Reset query and selected filters
     query = '';
     selectedIndex = -1;
 
-    // Re-render everything with all projects
     renderProjects(projects, projectsContainer, 'h2');
     renderPieChart(projects);
 
-    // Update the title
     if (titleElement) {
       titleElement.textContent = `Projects (${projects.length})`;
     }
