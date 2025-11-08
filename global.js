@@ -11,7 +11,8 @@ let pages = [
   { url: "", title: "Home" },
   { url: "projects/", title: "Projects" },
   { url: "contact/", title: "Contact" },
-  { url: "Profile/", title: "Resume" }
+  { url: "Profile/", title: "Resume" },
+  { url: "meta/", title: "Meta" }
 ];
 
 // Create nav

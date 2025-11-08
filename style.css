@@ -221,3 +221,126 @@ path {
     fill: var(--color);
   }
 }
+
+/* Container for the stats section */
+.stats {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  max-width: 400px;
+  font-family: system-ui, sans-serif;
+}
+
+/* Style the definition list layout */
+.stats dl {
+  display: grid;
+  grid-template-columns: 1fr auto; /* term on left, value on right */
+  row-gap: 0.4rem;
+  column-gap: 1rem;
+  margin: 0;
+}
+
+/* Term (name) styling */
+.stats dt {
+  font-weight: 600;
+  color: #333;
+}
+
+/* Definition (value) styling */
+.stats dd {
+  margin: 0;
+  text-align: right;
+  color: #555;
+}
+
+/* Base gridline style */
+.gridlines line {
+  stroke-width: 1;
+  stroke-opacity: 0.3;
+}
+
+/* Softer appearance for all gridlines */
+.gridlines path {
+  stroke: none; /* hides the main axis line */
+}
+
+/* Daytime gridlines — soft orange hue */
+.gridlines line.day {
+  stroke: #f6b26b;
+  stroke-opacity: 0.25;
+}
+
+/* Nighttime gridlines — subtle blue hue */
+.gridlines line.night {
+  stroke: #6fa8dc;
+  stroke-opacity: 0.25;
+}
+
+/* 1️⃣ Style the info definition list */
+dl.info {
+  display: grid;
+  grid-template-columns: auto 1fr; /* dt in first col, dd in second */
+  column-gap: 0.75rem;
+  row-gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  align-items: start;
+  font-family: system-ui, sans-serif;
+  font-size: 0.9rem;
+}
+
+/* Less prominent <dt> labels */
+dl.info dt {
+  font-weight: 500;
+  color: #666;
+  margin: 0;
+}
+
+/* More prominent <dd> values */
+dl.info dd {
+  margin: 0;
+  color: #222;
+  font-weight: 600;
+}
+
+/* 2️⃣ Tooltip layout */
+.tooltip {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  max-width: 300px;
+  pointer-events: none; /* lets mouse events pass through */
+  z-index: 1000;
+}
+
+circle {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+circle:hover {
+  transform: scale(1.5);
+}
+
+dl.info {
+  /* ... other styles ... */
+  transition-duration: 500ms;
+  transition-property: opacity, visibility;
+}
+
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+circle.selected {
+  fill: #ff6b6b;
+}
