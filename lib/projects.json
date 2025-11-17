@@ -6,10 +6,11 @@
         "description": "My first project"
       },
     {
-        "title": "Suscipit explicabo veritatis recusandae.",
-        "year": "N/A",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Tempore dolorem temporibus iure quasi laudantium beatae, expedita consequatur at ducimus architecto ex obcaecati porro ullam ut, cumque necessitatibus, ab est. Ea ipsum provident laborum ipsa repudiandae! Labore, explicabo numquam!"
+        "title": "Bike Watching",
+        "year": "2025",
+        "image": "../images/Bikewatching_project.jpeg",
+        "description": "Boston bike map!",
+        "url": "https://davidgol3p.github.io/bike_map/"
     },
     {
         "title": "Consectetur, quis temporibus! Ex!",
